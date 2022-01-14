@@ -39,4 +39,4 @@ FROM `departments`;
 SELECT COUNT(*) 
 as `phone` 
 FROM `teachers` 
-WHERE `phone` IS NULL 
+WHERE `phone` IS NULL;
