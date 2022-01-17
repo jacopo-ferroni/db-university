@@ -44,7 +44,7 @@ WHERE `phone` IS NULL;
 -----------------------> part 2 <-----------------------
 
 -- 1. Contare quanti iscritti ci sono stati ogni anno
-SELECT COUNT(*) AS 'Iscrizioni_annuali', YEAR(`enrolment_date`) 
+SELECT COUNT(*) AS 'Iscrizioni_annuali', YEAR(`enrolment_date`) AS 'anno'
 FROM `students` 
 GROUP BY YEAR(`enrolment_date`);
 
@@ -84,4 +84,9 @@ INNER JOIN `teachers` ON `teachers`.`id` = `teacher_id`
 WHERE `teacher_id` = 44 
 
 -- 4. Selezionare tutti gli studenti con i dati relativi al corso di laurea a cui sono iscritti e il relativo dipartimento, in ordine alfabetico per cognome e nome
+SELECT `students`.`surname`, `students`.`name`, `degrees`.`name`, `departements`.`name`
+FROM `students`
+INNER JOIN `degrees` on `students`.`degree_id` = `degrees`.`id`
+INNER JOIN `departments` on `departements.id` = `degrees`.`department_id`
+ORDER BY `students`.`name`;
 
